@@ -13,10 +13,9 @@
 <meta content="telephone=no" name="format-detection" />
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="apple-touch-icon-precomposed" href="/qunar-touch.png" />
+
 <title>统计-DA台球派</title>
-<link rel="stylesheet"
-	href="/css/common-2013072514033702.css"
+<link rel="stylesheet" href="/css/common-2013072514033702.css"
 	type='text/css' />
 
 <style type="text/css">
@@ -43,12 +42,23 @@
 					</div>
 				</div>
 				<div class="qn_list">
-					<ul>
-							<li class="item clearfix" data-code="fff" data-type="0">正在建设中...</li>
-					</ul>
-					<div class="bottom">
-						<div class="goTop">
-							<span>回到顶部</span>
+				
+					<div class="wrapper">
+						<div class="little_box">
+							<span class="itemname1">我的实时统计：</span>
+							<div class="itemname1">胜率:<span class="font4"><fmt:formatNumber value="${userRank.winPercentage }" pattern="##"  minFractionDigits="0"/> %</span>
+							 总计:<span class="font4">${userRank.amount }</span> 赢:<span class="font4">${userRank.wins }  </span>输:<span class="font4">${userRank.losses }</span></div>
+						</div>
+						<div id="graphbox">
+						
+			<c:forEach items="${rankList }" var="rank" varStatus="vs">
+							<div class="little_box">
+								<div class="graph">
+									<span class="color5" style="width: ${rank.winPercentage }%;">&nbsp;</span>
+								</div>
+								<div class="itemname">${rank.realName }:<span class="font3"><fmt:formatNumber value="${rank.winPercentage }" pattern="##"  minFractionDigits="0"/> % </span> 赢:<span class="font3">${rank.wins } </span> 输:<span class="font3">${rank.losses }</span></div>
+							</div>
+		   </c:forEach>
 						</div>
 					</div>
 					<div class="qn_footer">

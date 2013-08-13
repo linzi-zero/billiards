@@ -171,7 +171,7 @@ location.href = url;
 <a href='/game/search.jsp'><img src="/image/find.png" width="55px" height="55px"/><br/>查询</a>
 </li>
 <li>
-<a href='/game/stats.jsp'><img src="/image/stats.png" width="55px" height="55px"/><br/>统计</a>
+<a href='/stats/stats.action'><img src="/image/stats.png" width="55px" height="55px"/><br/>统计</a>
 </li>
 </ul>
 </div>

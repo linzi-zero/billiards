@@ -16,7 +16,7 @@
 
 	<package name="system" extends="struts-default" namespace="/">
 		<default-interceptor-ref name="defaultStack" />
-		<default-action-ref name="index" />		
+		<default-action-ref name="index" />
 		<global-results>
 			<result name="error">/page/error.jsp</result>
 			<result name="exception" type="redirect">/page/error.jsp</result>
@@ -34,13 +34,14 @@
 			<result name="success" type="redirect">index.jsp</result>
 			<result name="input">login.jsp</result>
 		</action>
-		
+
 		<!-- 用户退出 -->
 		<action name="logout" class="com.zero.billiards.web.action.LogoutAction">
 			<result name="success" type="redirect">login.jsp</result>
 		</action>
 	</package>
-	<package name="com.zero.billiards.web.action" extends="system"  namespace="/game">
+	<package name="game_action" extends="system"
+		namespace="/game">
 
 		<!-- 用户注册 -->
 		<action name="registerAction" class="com.zero.billiards.web.action.RegisterAction">
@@ -54,9 +55,18 @@
 			<result name="input">inputResult.jsp</result>
 			<result name="search">search.jsp</result>
 			<result name="result">searchResult.jsp</result>
-			<result name="findGameDetailRecord" type="redirectAction">findGameDetailRecord</result>
+			<result name="findGameDetailRecord" type="redirectAction">findGameDetailRecord
+			</result>
 			<result name="index" type="redirect">/index.jsp</result>
 		</action>
-
+		
+	</package>
+	
+	<package name="stats_action" extends="system" 	namespace="/stats">
+		<action name="*" class="com.zero.billiards.web.action.StatsAction"
+			method="{1}">
+			<result name="success">stats.jsp</result>
+			<result name="index" type="redirect">/index.jsp</result>
+		</action>
 	</package>
 </struts>
