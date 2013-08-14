@@ -34,8 +34,7 @@ public class GameDaoImpl extends MyHibernateDaoSupport implements IGameDao {
 	}
 
 	public void deleteGameDetailRecord(Integer id) {
-		TGameDetailRecord record = new TGameDetailRecord();
-		record.setId(id);
+		TGameDetailRecord record = (TGameDetailRecord) this.getHibernateTemplate().load(TGameDetailRecord.class, id);
 		this.getHibernateTemplate().delete(record);
 	}
 
