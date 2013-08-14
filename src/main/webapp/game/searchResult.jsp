@@ -56,7 +56,7 @@
 									<div class="qn_fl qn_mr10">
 										<p class="qn_grey">
 											<fmt:formatDate value="${record.endTime }"
-												pattern="yyyy-MM-dd hh:mm:ss" />
+												pattern="yyyy-MM-dd HH:mm:ss" />
 										</p>
 									</div>
 									<div class="min_price qn_arrow_grey b">
@@ -118,7 +118,7 @@
 				//后退
 				$('#flightsPage .back a').on('click', function(e) {
 					e.preventDefault();
-					window.history.go(-1);
+					window.location.href="/game/search.jsp";
 				});
 
 				//选中

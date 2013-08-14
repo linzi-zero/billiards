@@ -45,9 +45,15 @@
 				
 					<div class="wrapper">
 						<div class="little_box">
-							<span class="itemname1">我的实时统计：</span>
-							<div class="itemname1">胜率:<span class="font4"><fmt:formatNumber value="${userRank.winPercentage }" pattern="##"  minFractionDigits="0"/> %</span>
-							 总计:<span class="font4">${userRank.amount }</span> 赢:<span class="font4">${userRank.wins }  </span>输:<span class="font4">${userRank.losses }</span></div>
+							<span class="itemname1"><c:out value="${sessionScope._URN}" />-实时排名：
+							<c:forEach items="${rankList }" var="rank" varStatus="vs">
+								<c:if test="${rank.userId eq userRank.userId }">
+									第<span class="font4">${vs.index+1 }</span>名
+								</c:if>
+							</c:forEach>
+							</span>
+							<div class="itemname1">胜率:<span class="font4"><fmt:formatNumber value="${userRank.winPercentage }" pattern="##"  minFractionDigits="0"/>%</span>
+							 总计:<span class="font4">${userRank.amount }</span> 赢:<span class="font4">${userRank.wins }</span>输:<span class="font4">${userRank.losses }</span></div>
 						</div>
 						<div id="graphbox">
 						
@@ -56,7 +62,7 @@
 								<div class="graph">
 									<span class="color5" style="width: ${rank.winPercentage }%;">&nbsp;</span>
 								</div>
-								<div class="itemname">${rank.realName }:<span class="font3"><fmt:formatNumber value="${rank.winPercentage }" pattern="##"  minFractionDigits="0"/> % </span> 赢:<span class="font3">${rank.wins } </span> 输:<span class="font3">${rank.losses }</span></div>
+								<div class="itemname"><span class="font4">${vs.index+1}</span>:${rank.realName }:<span class="font3"><fmt:formatNumber value="${rank.winPercentage }" pattern="##"  minFractionDigits="0"/>% </span> 赢:<span class="font3">${rank.wins } </span> 输:<span class="font3">${rank.losses }</span></div>
 							</div>
 		   </c:forEach>
 						</div>
@@ -84,7 +90,12 @@
 			setTimeout(function() {
 				window.scrollTo(0, 1);
 			}, 100);
-		})
+		});
+		//后退
+		$('#flightsPage .back a').on('click', function(e) {
+			e.preventDefault();
+			window.history.go(-1);
+		});
 	</script>
 </body>
 </html>
